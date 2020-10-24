@@ -13,28 +13,33 @@ const NavBlock = styled.div`
     background: white;
     height: 80px;
     align-items: center;
-
-
+    text-align: left !important;
+    font-weight: 500;
+    @media (min-width: 375px) {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+    }
+    @media (min-width: 950px) {
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+    }
+    @media (min-width: 1128px) {
+        padding-left: 80px !important;
+        padding-right: 80px !important;
+    }
     .left-block, .right-block {
-        width: 466px;
-        height: 80px;
+        flex: 1 0 140px !important;
     }
-
-    .left-block {
-        margin-left: 50px;
-    }
-
     .center-block {
-        width: 348px;
-        height: 48px;
+        padding: 0 24px !important;
+        flex: 0 1 auto !important;
     }
 `;
 
-const LogoWrapper = styled.svg`
-        fill: blue !important;
-        height: 80px !important;
-        width: 102px !important;
-        path {
+const LogoWrapper = styled.div`
+        path {    
+            height: 80px !important;
+            width: 102px !important;
             fill: rgb(255, 56, 92) !important;
         }
 `
