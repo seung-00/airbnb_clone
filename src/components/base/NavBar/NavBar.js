@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
-import SearchBar from './SearchBar'
-import { ReactComponent as AirbnbLogo } from '../../../svg/logo.svg'
+import SearchBlock from './SearchBlock'
+import { ReactComponent as LogoSvg } from '../../../svg/logo.svg'
+import MainBlock from './MainBlock';
+import MenuBlock from './MenuBlock';
 
 /**
  * Components responsible for layout navigation bar
@@ -13,35 +15,40 @@ const NavBlock = styled.div`
     background: white;
     height: 80px;
     align-items: center;
-    text-align: left !important;
-    font-weight: 500;
+    text-align: left;
     @media (min-width: 375px) {
-        padding-left: 24px !important;
-        padding-right: 24px !important;
+        padding-left: 24px;
+        padding-right: 24px;
     }
     @media (min-width: 950px) {
-        padding-left: 40px !important;
-        padding-right: 40px !important;
+        padding-left: 40px;
+        padding-right: 40px;
     }
     @media (min-width: 1128px) {
-        padding-left: 80px !important;
-        padding-right: 80px !important;
+        padding-left: 80px;
+        padding-right: 80px;
     }
+    
+    // fix flex-basis size for outer block
     .left-block, .right-block {
-        flex: 1 0 140px !important;
+        flex: 1 0 140px;
+    }
+    .right-block {
+        display: flex;
+        justify-content: flex-end;
     }
     .center-block {
-        padding: 0 24px !important;
-        flex: 0 1 auto !important;
+        padding: 0 24px;
+        flex: 0 1 auto;
     }
 `;
 
 const LogoWrapper = styled.div`
-        path {    
-            height: 80px !important;
-            width: 102px !important;
-            fill: rgb(255, 56, 92) !important;
-        }
+    path {
+        height: 80px;
+        width: 102px;
+        fill: rgb(255, 56, 92);
+    }
 `
 
 const NavBar = () => {
@@ -49,14 +56,15 @@ const NavBar = () => {
         <NavBlock>
             <div className='left-block'>
                 <LogoWrapper>
-                    <AirbnbLogo />
+                    <LogoSvg />
                 </LogoWrapper>
             </div>
             <div className='center-block'>
-                <SearchBar />
+                <SearchBlock />
             </div>
             <div className='right-block'>
-
+                <MainBlock />
+                <MenuBlock />
             </div>
         </NavBlock>
     )

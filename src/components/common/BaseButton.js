@@ -1,7 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
-
 const StyledButton = styled.button`
     display: flex;
     border-radius: 24px;
@@ -10,8 +9,9 @@ const StyledButton = styled.button`
     align-items: center;
     text-align: left;
     outline: none;
-    cursor: point;
-    height: 48px;
+    cursor: pointer;
+    height: auto;
+    width: auto;
 
     ${props =>
         props.grayBackground && 
