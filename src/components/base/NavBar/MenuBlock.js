@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ReactComponent as MenuSvg } from '../../../svg/menu.svg'
-import { ReactComponent as ProfileSvg } from '../../../svg/profile.svg'
-import BaseButton from '../../common/BaseButton'
+import BaseButton from '@/components/common/BaseButton'
+import { ReactComponent as MenuSvg } from '@/svg/menu.svg'
+import { ReactComponent as ProfileSvg } from '@/svg/profile.svg'
 
 const MenuButton = styled(BaseButton)`
     padding: 5px 5px 5px 12px;

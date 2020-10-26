@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styled, { css } from 'styled-components'
-import { ReactComponent as EarthSvg } from '../../../svg/earth.svg'
-import { ReactComponent as BottomSvg } from '../../../svg/bottom.svg'
-import BaseButton from '../../common/BaseButton'
+import styled from 'styled-components'
+import BaseButton from '@/components/common/BaseButton'
+import { ReactComponent as EarthSvg } from '@/svg/earth.svg'
+import { ReactComponent as BottomSvg } from '@/svg/bottom.svg'
+
     
 const HostWrapper = styled.div`
     border-radius: 22px;

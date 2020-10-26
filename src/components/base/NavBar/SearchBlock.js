@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
-import {ReactComponent as SearchSVG} from '../../../svg/serach_button.svg';
-import BaseButton from '../../common/BaseButton';
+import {ReactComponent as SearchSVG} from '@/svg/serach_button.svg';
+import BaseButton from '@/components/common/BaseButton';
 
 const SearchWrapper = styled.div`
     width: 290px;

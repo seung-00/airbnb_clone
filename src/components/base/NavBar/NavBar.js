@@ -1,10 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components';
-import SearchBlock from './SearchBlock'
-import { ReactComponent as LogoSvg } from '../../../svg/logo.svg'
-import MainBlock from './MainBlock';
-import MenuBlock from './MenuBlock';
+import SearchBlock from '@/components/base/NavBar/SearchBlock'
+import MainBlock from '@/components/base/NavBar/MainBlock'
+import MenuBlock from '@/components/base/NavBar/MenuBlock';
+import { ReactComponent as LogoSvg } from '@/svg/logo.svg'
 
 /**
  * Components responsible for layout navigation bar
