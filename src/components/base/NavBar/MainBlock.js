@@ -19,7 +19,7 @@ const LangCurr = styled.div`
 
 const MainWrapper = styled.div`
     height: 42px;
-    display:flex;
+    display: flex;
     margin-right: 8px;
 `
 
