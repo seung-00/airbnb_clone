@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import SearchBlock from '@/components/base/NavBar/SearchBlock'
 import MainBlock from '@/components/base/NavBar/MainBlock'
 import MenuBlock from '@/components/base/NavBar/MenuBlock';
+import { respondTo } from '@/components/utils/mixins';
 import { ReactComponent as LogoSvg } from '@/svg/logo.svg'
 
 /**
@@ -15,18 +16,18 @@ const NavBlock = styled.div`
     height: 80px;
     align-items: center;
     text-align: left;
-    @media (min-width: 375px) {
+    ${respondTo.mobile`
         padding-left: 24px;
         padding-right: 24px;
-    }
-    @media (min-width: 950px) {
+    `}
+    ${respondTo.tablet`
         padding-left: 40px;
         padding-right: 40px;
-    }
-    @media (min-width: 1128px) {
+    `}
+    ${respondTo.desktop`
         padding-left: 80px;
         padding-right: 80px;
-    }
+    `}
     
     // fix flex-basis size for outer block
     .left-block, .right-block {
