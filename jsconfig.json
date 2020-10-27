@@ -1,6 +1,6 @@
 {
-    "extends": "./config.paths.json",
-    "compilerOptions": {
-        "target": "es6"
-    }
+  "extends": "./config.paths.json",
+  "compilerOptions": {
+    "target": "es6"
+  }
 }
