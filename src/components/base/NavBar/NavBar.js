@@ -29,17 +29,20 @@ const NavBlock = styled.div`
         padding-right: 80px;
     `}
     
-    // fix flex-basis size for outer block
-    .left-block, .right-block {
+    div {
+        // fix flex-basis size for outer block
+        &.left-block {
         flex: 1 0 140px;
-    }
-    .right-block {
-        display: flex;
-        justify-content: flex-end;
-    }
-    .center-block {
-        padding: 0 24px;
-        flex: 0 1 auto;
+        }
+        &.right-block {
+            flex: 1 0 140px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        &.center-block {
+            padding: 0 24px;
+            flex: 0 1 auto;
+        }
     }
 `;
 
