@@ -32,10 +32,11 @@ const SearchButton = styled(BaseButton)`
   height: 48px;
 `;
 
-const SearchBlock = () => {
+// eslint-disable-next-line react/prop-types
+const SearchBlock = ({ onClick }) => {
   return (
     <SearchWrapper>
-      <SearchButton border shadow>
+      <SearchButton border shadow onClick={onClick}>
         <SearchText>검색 시작하기</SearchText>
         <SearchSVGWrapper>
           <SearchSVG />
