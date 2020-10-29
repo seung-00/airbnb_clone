@@ -56,7 +56,7 @@ const LogoWrapper = styled.div`
   }
 `;
 
-const SearchBar = ({ isSearching, onClick }) => {
+const SearchBar = ({ isSearching, onSearch, selectedTab, onChangeTab }) => {
   return (
     <NavBlock>
       <div className="left-block">
@@ -65,7 +65,11 @@ const SearchBar = ({ isSearching, onClick }) => {
         </LogoWrapper>
       </div>
       <div className="center-block">
-        {isSearching ? <SearchBlock /> : <ButtonBlock onClick={onClick} />}
+        {isSearching ? (
+          <SearchBlock selectedTab={selectedTab} onChangeTab={onChangeTab} />
+        ) : (
+          <ButtonBlock onSearch={onSearch} />
+        )}
       </div>
       <div className="right-block">
         <MainBlock />

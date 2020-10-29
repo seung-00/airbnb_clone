@@ -33,10 +33,10 @@ const SearchButton = styled(BaseButton)`
 `;
 
 // eslint-disable-next-line react/prop-types
-const ButtonBlock = ({ onClick }) => {
+const ButtonBlock = ({ onSearch }) => {
   return (
     <ButtonWrapper>
-      <SearchButton border shadow onClick={onClick}>
+      <SearchButton border shadow onClick={onSearch}>
         <SearchText>검색 시작하기</SearchText>
         <SearchSVGWrapper>
           <SearchSVG />
