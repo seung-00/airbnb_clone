@@ -5,14 +5,14 @@ import styled, { css } from 'styled-components';
 import { respondTo } from '@/components/utils/mixins';
 
 const SearchForm = styled.form`
-  margin: 0 auto !important;
-  max-width: 850px !important;
+  margin: 0 auto;
+  max-width: 850px;
 `;
 
 const SearchSet = styled.fieldset`
-  border: 0px !important;
-  margin: 0px !important;
-  padding: 0px !important;
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
 `;
 
 const SearchTabList = styled.div`
@@ -58,7 +58,7 @@ const TabText = styled.span`
       font-size: 16px;
       line-height: 20px;
       font-weight: 400;
-      padding: 10px 16px !important;
+      padding: 10px 16px;
   `}
 `;
 
