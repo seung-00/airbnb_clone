@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import ButtonBlock from '@/components/search/ButtonBlock';
 import MainBlock from '@/components/search/MainBlock';
 import MenuBlock from '@/components/search/MenuBlock';
-import SearchBlock from '@/components/search/SearchBlock';
+import SearchForm from '@/container/search/SearchForm';
 import { respondTo } from '@/components/utils/mixins';
 import { ReactComponent as LogoSvg } from '@/svg/logo.svg';
 
@@ -56,7 +56,9 @@ const LogoWrapper = styled.div`
   }
 `;
 
-const SearchBar = ({ isSearching, onSearch, selectedTab, onChangeTab }) => {
+const NavBar = () => {
+  const [isSearching, setSearching] = useState(false);
+
   return (
     <NavBlock>
       <div className="left-block">
@@ -66,9 +68,9 @@ const SearchBar = ({ isSearching, onSearch, selectedTab, onChangeTab }) => {
       </div>
       <div className="center-block">
         {isSearching ? (
-          <SearchBlock selectedTab={selectedTab} onChangeTab={onChangeTab} />
+          <SearchForm />
         ) : (
-          <ButtonBlock onSearch={onSearch} />
+          <ButtonBlock setSearching={setSearching} />
         )}
       </div>
       <div className="right-block">
@@ -79,4 +81,4 @@ const SearchBar = ({ isSearching, onSearch, selectedTab, onChangeTab }) => {
   );
 };
 
-export default SearchBar;
+export default NavBar;
