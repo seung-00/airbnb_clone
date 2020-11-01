@@ -17,7 +17,7 @@ const StyledButton = styled.button`
     props.grayBackground &&
     css`
       &:hover {
-        background-color: #f1f2f6;
+        background-color: ${props.backColor};
       }
     `}
 
