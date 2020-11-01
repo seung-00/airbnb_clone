@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ReactComponent as SearchSVG } from '@/svg/serach_button.svg';
 import BaseButton from '@/components/common/BaseButton';
 
-const SearchWrapper = styled.div`
+const ButtonWrapper = styled.div`
   width: 290px;
   display: flex;
 `;
@@ -32,17 +32,18 @@ const SearchButton = styled(BaseButton)`
   height: 48px;
 `;
 
-const SearchBlock = () => {
+// eslint-disable-next-line react/prop-types
+const ButtonBlock = ({ onSearch }) => {
   return (
-    <SearchWrapper>
-      <SearchButton border shadow>
+    <ButtonWrapper>
+      <SearchButton border shadow onClick={onSearch}>
         <SearchText>검색 시작하기</SearchText>
         <SearchSVGWrapper>
           <SearchSVG />
         </SearchSVGWrapper>
       </SearchButton>
-    </SearchWrapper>
+    </ButtonWrapper>
   );
 };
 
-export default SearchBlock;
+export default ButtonBlock;
