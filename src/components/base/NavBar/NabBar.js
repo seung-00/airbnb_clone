@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import ButtonBlock from '@/components/search/ButtonBlock';
 import MainBlock from '@/components/search/MainBlock';
 import MenuBlock from '@/components/search/MenuBlock';
-import { respondTo } from '@/components/utils/mixins';
+import { respondTo } from '@/utils/mixins';
 import { ReactComponent as LogoSvg } from '@/svg/logo.svg';
 import SearchBlock from '@/components/search/SearchBlock';
 
