@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import StayBlock from './StayBlock';
+import StayBlock from '@/components/search-stay/StayBlock';
 
 const SearchWrapper = styled.div`
   position: absolute;
@@ -11,7 +11,7 @@ const SearchWrapper = styled.div`
 `;
 const StyledForm = styled.form`
   margin: 0 auto;
-  max-width: 850px;
+  max-width: 700px;
 `;
 
 const SearchTabWrapper = styled.fieldset`
