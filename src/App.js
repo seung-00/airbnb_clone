@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import SearchForm from '@/container/search/SearchForm';
 import Footer from '@/components/base/Footer/Footer';
-import LandingPage from '@/pages/LandingPage/LandingPage';
+import LandingPage from '@/components/pages/LandingPage/LandingPage';
+import NavBar from './components/base/NavBar/NabBar';
 
 const App = () => {
   return (
     <>
-      <SearchForm />
+      <NavBar />
       <Switch>
         <Route exact path="/" component={LandingPage} />
       </Switch>

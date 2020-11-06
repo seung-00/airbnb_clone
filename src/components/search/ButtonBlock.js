@@ -5,7 +5,9 @@ import BaseButton from '@/components/common/BaseButton';
 
 const ButtonWrapper = styled.div`
   width: 290px;
+  height: 80px;
   display: flex;
+  align-items: center;
 `;
 
 const SearchSVGWrapper = styled.div`
@@ -33,10 +35,17 @@ const SearchButton = styled(BaseButton)`
 `;
 
 // eslint-disable-next-line react/prop-types
-const ButtonBlock = ({ onSearch }) => {
+const ButtonBlock = ({ setSelectedTab, setSearching }) => {
   return (
     <ButtonWrapper>
-      <SearchButton border shadow onClick={onSearch}>
+      <SearchButton
+        border
+        shadow
+        onClick={() => {
+          setSelectedTab('search-tab-STAYS'); // default tab
+          setSearching((prevState) => !prevState);
+        }}
+      >
         <SearchText>검색 시작하기</SearchText>
         <SearchSVGWrapper>
           <SearchSVG />

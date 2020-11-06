@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-const StyledButton = styled.button`
+const StyledButton = styled.div`
   display: flex;
   border-radius: 24px;
   background: transparent;
@@ -17,7 +17,7 @@ const StyledButton = styled.button`
     props.grayBackground &&
     css`
       &:hover {
-        background-color: #f1f2f6;
+        background-color: ${props.backColor};
       }
     `}
 

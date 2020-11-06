@@ -17,6 +17,7 @@ const ProfileWrapper = styled.div`
 `;
 
 const MenuWrapper = styled.div`
+  position: relative;
   width: 77px;
 `;
 

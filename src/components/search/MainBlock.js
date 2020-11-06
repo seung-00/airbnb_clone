@@ -10,7 +10,7 @@ const HostWrapper = styled.div`
   padding: 12px;
 `;
 
-const LangCurr = styled.div`
+const Language = styled.div`
   background: transparent;
   padding: 12px;
   align-items: center;
@@ -18,8 +18,9 @@ const LangCurr = styled.div`
 `;
 
 const MainWrapper = styled.div`
-  height: 42px;
+  position: relative;
   display: flex;
+  height: 42px;
   margin-right: 8px;
 `;
 
@@ -30,18 +31,18 @@ const EarthSvgWrapper = styled.div`
 const MainBlock = () => {
   return (
     <MainWrapper>
-      <BaseButton grayBackground>
+      <BaseButton grayBackground backColor={'#f1f2f6'}>
         <HostWrapper>
           <Link to="/" /* host/homes */>호스트 되기</Link>
         </HostWrapper>
       </BaseButton>
-      <BaseButton grayBackground>
-        <LangCurr>
+      <BaseButton grayBackground backColor={'#f1f2f6'}>
+        <Language>
           <EarthSvgWrapper>
             <EarthSvg />
           </EarthSvgWrapper>
           <BottomSvg />
-        </LangCurr>
+        </Language>
       </BaseButton>
     </MainWrapper>
   );
