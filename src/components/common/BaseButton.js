@@ -14,10 +14,10 @@ const StyledButton = styled.div`
   width: auto;
 
   ${(props) =>
-    props.grayBackground &&
+    props.hoverColor &&
     css`
       &:hover {
-        background-color: ${props.backColor};
+        background-color: ${props.hoverColor};
       }
     `}
 
