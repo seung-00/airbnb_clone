@@ -1,10 +1,7 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Fence from '@/components/common/Fence';
 import BaseButton from '@/components/common/BaseButton';
-import LocationBlock from '@/components/search-option-stay/LocationBlock';
-import CheckIOBlock from '@/components/search-option-stay/CheckIOBlock';
-import HeadCountBlock from '@/components/search-option-stay/HeadCountBlock';
 
 const ButtonInnerWrapper = styled.div`
   position: relative;
@@ -50,26 +47,28 @@ const OptionButton = styled(BaseButton)`
     `}
 `;
 
-const StayBlock = () => {
+const OptionButtonBlock = ({
+  category,
+  description,
+  isButtonVisible,
+  setButtonVisible,
+}) => {
   return (
     <>
-      <LocationBlock />
-      <Fence />
-      <CheckIOBlock
-        ButtonInnerWrapper={ButtonInnerWrapper}
-        SearchOptionText={SearchOptionText}
-        ButtonInnerText={ButtonInnerText}
-        OptionButton={OptionButton}
-      />
-      <Fence />
-      <HeadCountBlock
-        ButtonInnerWrapper={ButtonInnerWrapper}
-        SearchOptionText={SearchOptionText}
-        ButtonInnerText={ButtonInnerText}
-        OptionButton={OptionButton}
-      />
+      <label>
+        <OptionButton
+          hoverColor={'#EBEBEB'}
+          isComponentVisible={isButtonVisible}
+          onClick={() => setButtonVisible(true)}
+        >
+          <ButtonInnerWrapper>
+            <SearchOptionText>{category}</SearchOptionText>
+            <ButtonInnerText>{description}</ButtonInnerText>
+          </ButtonInnerWrapper>
+        </OptionButton>
+      </label>
     </>
   );
 };
 
-export default StayBlock;
+export default OptionButtonBlock;

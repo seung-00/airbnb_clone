@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import styled from 'styled-components';
-import useComponentVisible from '@/utils/hooks/useComponentVisible';
+import React from '@/components/search-option/stay/react';
+import styled from '@/components/search-option/stay/styled-components';
+import useComponentVisible from '@/components/search-option/stay/@/utils/hooks/useComponentVisible';
 
 const HeadCountWrapper = styled.div`
   flex: 0.95;

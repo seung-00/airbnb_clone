@@ -46,14 +46,9 @@ const LocationInput = styled.input`
   }
 `;
 
-const LocationWrapper = styled.div`
-  flex: 1.3;
-  margin: -2px;
-`;
-
 const LocationBlock = () => {
   return (
-    <LocationWrapper>
+    <>
       <label>
         <LocationButton hoverColor={'#EBEBEB'}>
           <ButtonInnerWrapper>
@@ -62,7 +57,7 @@ const LocationBlock = () => {
           </ButtonInnerWrapper>
         </LocationButton>
       </label>
-    </LocationWrapper>
+    </>
   );
 };
 
