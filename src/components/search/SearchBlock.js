@@ -2,7 +2,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import StayBlock from '@/components/search-option-stay/StayBlock';
+import StayBlock from '@/components/search-option/StayBlock/StayBlock';
+import ExperienceBlock from '@/components/search-option/ExperienceBlock/ExperienceBlock';
 
 const SearchWrapper = styled.div`
   position: absolute;
@@ -133,7 +134,7 @@ const SearchBlock = ({ selectedTab, setSelectedTab }) => {
         </SearchTabWrapper>
         <SearchOptionWrapper>
           {selectedTab === 'search-tab-STAYS' && <StayBlock />}
-          {selectedTab === 'search-tab-EXPERIENCES' && <h>test2</h>}
+          {selectedTab === 'search-tab-EXPERIENCES' && <ExperienceBlock />}
         </SearchOptionWrapper>
       </StyledForm>
     </SearchWrapper>
