@@ -10,8 +10,6 @@ export default function useComponentVisible(initialIsVisible) {
     // ref 컴포넌트가 event 타겟을 포함하고 있지 않다면
     if (ref.current && !ref.current.contains(e.target)) {
       setIsComponentVisible(false);
-      console.log('끄자');
-      console.log(ref);
     }
   };
 

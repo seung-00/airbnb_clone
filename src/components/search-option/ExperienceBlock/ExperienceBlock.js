@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Fence from '@/components/common/Fence';
 import LocationBlock from '@/components/search-option/LocationBlock';
-import useComponentVisible from '@/utils/hooks/useComponentVisible';
 import OptionButtonBlock from '@/components/search-option/OptionButtonBlock';
 
 const LocationWrapper = styled.div`
@@ -15,20 +14,16 @@ const DateWrapper = styled.div`
 `;
 
 const ExperienceBlock = () => {
-  const [refDate, isDateVisible, setDateVisible] = useComponentVisible(false);
-
   return (
     <>
       <LocationWrapper>
         <LocationBlock />
       </LocationWrapper>
       <Fence />
-      <DateWrapper ref={refDate}>
+      <DateWrapper>
         <OptionButtonBlock
           category="날짜"
           description="원하는 날짜를 입력하세요."
-          isButtonVisible={isDateVisible}
-          setButtonVisible={setDateVisible}
         />
       </DateWrapper>
     </>
