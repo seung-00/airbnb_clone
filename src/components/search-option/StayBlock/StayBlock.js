@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Fence from '@/components/common/Fence';
 import LocationBlock from '@/components/search-option/LocationBlock';
 import OptionButtonBlock from '@/components/search-option/OptionButtonBlock';
-import useComponentVisible from '@/utils/hooks/useComponentVisible';
 
 const LocationWrapper = styled.div`
   flex: 1.3;
@@ -26,22 +25,6 @@ const HeadCountWrapper = styled.div`
 `;
 
 const StayBlock = () => {
-  const [refCheckIn, isCheckInVisible, setCheckInVisible] = useComponentVisible(
-    false
-  );
-
-  const [
-    refCheckOut,
-    isCheckOutVisible,
-    setCheckOutVisible,
-  ] = useComponentVisible(false);
-
-  const [
-    refHeadCount,
-    isHeadCountVisible,
-    setHeadCountVisible,
-  ] = useComponentVisible(false);
-
   return (
     <>
       <LocationWrapper>
@@ -49,34 +32,17 @@ const StayBlock = () => {
       </LocationWrapper>
       <Fence />
       <CheckIOWrapper>
-        <div className="check-in-block" ref={refCheckIn}>
-          <OptionButtonBlock
-            category="체크인"
-            description="날짜 추가"
-            isButtonVisible={isCheckInVisible}
-            setButtonVisible={setCheckInVisible}
-          />
+        <div className="check-in-block">
+          <OptionButtonBlock category="체크인" description="날짜 추가" />
         </div>
         <Fence />
-        <div className="check-out-block" ref={refCheckOut}>
-          <OptionButtonBlock
-            category="체크아웃"
-            description="날짜 추가"
-            isButtonVisible={isCheckOutVisible}
-            setButtonVisible={setCheckOutVisible}
-          />
+        <div className="check-out-block">
+          <OptionButtonBlock category="체크아웃" description="날짜 추가" />
         </div>
       </CheckIOWrapper>
       <Fence />
       <HeadCountWrapper>
-        <div ref={refHeadCount}>
-          <OptionButtonBlock
-            category="인원"
-            description="게스트 추가"
-            isButtonVisible={isHeadCountVisible}
-            setButtonVisible={setHeadCountVisible}
-          />
-        </div>
+        <OptionButtonBlock category="인원" description="게스트 추가" />
       </HeadCountWrapper>
     </>
   );

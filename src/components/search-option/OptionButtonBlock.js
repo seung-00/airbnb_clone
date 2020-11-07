@@ -2,6 +2,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import BaseButton from '@/components/common/BaseButton';
+import useComponentVisible from '@/utils/hooks/useComponentVisible';
 
 const ButtonInnerWrapper = styled.div`
   position: relative;
@@ -47,19 +48,19 @@ const OptionButton = styled(BaseButton)`
     `}
 `;
 
-const OptionButtonBlock = ({
-  category,
-  description,
-  isButtonVisible,
-  setButtonVisible,
-}) => {
+const OptionButtonBlock = ({ category, description }) => {
+  const [ref, isComponentVisible, setIsComponentVisible] = useComponentVisible(
+    false
+  );
   return (
     <>
-      <label>
+      <label ref={ref}>
         <OptionButton
           hoverColor={'#EBEBEB'}
-          isComponentVisible={isButtonVisible}
-          onClick={() => setButtonVisible(true)}
+          isComponentVisible={isComponentVisible}
+          onClick={() => {
+            setIsComponentVisible(true);
+          }}
         >
           <ButtonInnerWrapper>
             <SearchOptionText>{category}</SearchOptionText>
