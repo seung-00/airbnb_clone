@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import StayBlock from '@/components/search-option/StayBlock/StayBlock';
 import ExperienceBlock from '@/components/search-option/ExperienceBlock/ExperienceBlock';
+import OptionConstants from '@/utils/constants/SearchOptionConstants';
 
 const SearchWrapper = styled.div`
   position: absolute;
@@ -29,12 +30,8 @@ const SearchTabList = styled.div`
 `;
 
 const TabWrapper = styled.label`
-  #search-tab-STAYS {
-    appearance: none;
-  }
-  #search-tab-EXPERIENCES {
-    appearance: none;
-  }
+  ${(props) => `#${props.stay} {appearance: none;}`}
+  ${(props) => `#${props.experience} {appearance: none;}`}
 `;
 
 const TabText = styled.span`
@@ -88,14 +85,16 @@ const SearchOptionWrapper = styled.div`
 `;
 
 const SearchBlock = ({ selectedTab, setSelectedTab }) => {
+  const STAY = OptionConstants.STAY;
+  const EXPERIENCE = OptionConstants.EXPERIENCE;
   return (
     <SearchWrapper>
       <StyledForm>
         <SearchTabWrapper>
           <SearchTabList role="tablist" aria-label="무엇을 찾고 계신가요?">
-            <TabWrapper>
+            <TabWrapper stay={STAY} experience={EXPERIENCE}>
               <input
-                id="search-tab-STAYS"
+                id={STAY}
                 role="tab"
                 type="radio"
                 aria-selected="true"
@@ -103,17 +102,13 @@ const SearchBlock = ({ selectedTab, setSelectedTab }) => {
                   setSelectedTab(e.target.id);
                 }}
               />
-              <TabText
-                type="input"
-                selectedTab={selectedTab}
-                tabName="search-tab-STAYS"
-              >
+              <TabText type="input" selectedTab={selectedTab} tabName={STAY}>
                 숙소
               </TabText>
             </TabWrapper>
-            <TabWrapper>
+            <TabWrapper stay={STAY} experience={EXPERIENCE}>
               <input
-                id="search-tab-EXPERIENCES"
+                id={EXPERIENCE}
                 role="tab"
                 type="radio"
                 aria-selected="false"
@@ -122,7 +117,7 @@ const SearchBlock = ({ selectedTab, setSelectedTab }) => {
               <TabText
                 type="input"
                 selectedTab={selectedTab}
-                tabName="search-tab-EXPERIENCES"
+                tabName={EXPERIENCE}
               >
                 체험
               </TabText>
@@ -133,12 +128,11 @@ const SearchBlock = ({ selectedTab, setSelectedTab }) => {
           </SearchTabList>
         </SearchTabWrapper>
         <SearchOptionWrapper>
-          {selectedTab === 'search-tab-STAYS' && <StayBlock />}
-          {selectedTab === 'search-tab-EXPERIENCES' && <ExperienceBlock />}
+          {selectedTab === STAY && <StayBlock />}
+          {selectedTab === EXPERIENCE && <ExperienceBlock />}
         </SearchOptionWrapper>
       </StyledForm>
     </SearchWrapper>
   );
 };
-
 export default SearchBlock;

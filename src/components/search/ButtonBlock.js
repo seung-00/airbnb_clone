@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as SearchSVG } from '@/svg/serach_button.svg';
 import BaseButton from '@/components/common/BaseButton';
+import OptionConstants from '@/utils/constants/SearchOptionConstants';
 
 const ButtonWrapper = styled.div`
   width: 290px;
@@ -42,7 +43,7 @@ const ButtonBlock = ({ setSelectedTab, setSearching }) => {
         border
         shadow
         onClick={() => {
-          setSelectedTab('search-tab-STAYS'); // default tab
+          setSelectedTab(OptionConstants.STAY); // default tab
           setSearching((prevState) => !prevState);
         }}
       >
