@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import StayBlock from '@/components/search-stay/StayBlock';
+import StayBlock from '@/components/search-option-stay/StayBlock';
 
 const SearchWrapper = styled.div`
   position: absolute;

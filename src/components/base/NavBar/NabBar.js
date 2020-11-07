@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
+import { ReactComponent as LogoSvg } from '@/svg/logo.svg';
 import ButtonBlock from '@/components/search/ButtonBlock';
 import MainBlock from '@/components/search/MainBlock';
 import MenuBlock from '@/components/search/MenuBlock';
-import { respondTo } from '@/utils/mixins';
-import { ReactComponent as LogoSvg } from '@/svg/logo.svg';
 import SearchBlock from '@/components/search/SearchBlock';
+import { respondTo } from '@/utils/mixins';
 
 /**
  * Components responsible for layout navigation bar

@@ -47,15 +47,15 @@ const LocationInput = styled.input`
 `;
 
 const LocationWrapper = styled.div`
-  flex: 1.5;
+  flex: 1.3;
   margin: -2px;
 `;
 
 const LocationBlock = () => {
   return (
     <LocationWrapper>
-      <label className="input-wrapper">
-        <LocationButton grayBackground backColor={'lightgray'}>
+      <label>
+        <LocationButton hoverColor={'#EBEBEB'}>
           <ButtonInnerWrapper>
             <SearchOptionText>위치</SearchOptionText>
             <LocationInput placeholder="어디로 여행가세요?" autoFocus />
