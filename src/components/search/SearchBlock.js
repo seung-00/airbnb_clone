@@ -42,6 +42,17 @@ const TabText = styled.span`
   font-weight: 400;
   padding: 10px 16px;
   position: relative;
+  &::before {
+    content: '';
+    background-color: currentcolor;
+    border-radius: 1px;
+    height: 2px;
+    width: 20px;
+    position: absolute;
+    left: 35%;
+    bottom: 0px;
+    transform: scaleX(0);
+  }
 
   ${(props) =>
     props.type === 'input' &&
@@ -52,16 +63,27 @@ const TabText = styled.span`
   &:hover {
     opacity: 0.7;
     &::before {
-      content: '';
-      background-color: currentcolor;
-      border-radius: 1px;
-      height: 2px;
-      width: 4.5px;
-      position: absolute;
-      left: 50%;
-      bottom: 0px;
+      transform: scaleX(0.2);
     }
   }
+  ${(props) =>
+    props.selectedTab &&
+    props.selectedTab === props.tabName &&
+    css`
+      &::before {
+        transform: scaleX(1) !important;
+      }
+    `}
+`;
+
+const SearchOptionWrapper = styled.div`
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 32px;
+  color: rgb(34, 34, 34);
+  display: flex;
+  height: 60px;
+  position: relative;
+  background-color: rgb(247, 247, 247);
 `;
 
 const SearchBlock = ({ selectedTab, setSelectedTab }) => {
@@ -76,9 +98,17 @@ const SearchBlock = ({ selectedTab, setSelectedTab }) => {
                 role="tab"
                 type="radio"
                 aria-selected="true"
-                onClick={(e) => setSelectedTab(e.target.id)}
+                onClick={(e) => {
+                  setSelectedTab(e.target.id);
+                }}
               />
-              <TabText type="input">숙소</TabText>
+              <TabText
+                type="input"
+                selectedTab={selectedTab}
+                tabName="search-tab-STAYS"
+              >
+                숙소
+              </TabText>
             </TabWrapper>
             <TabWrapper>
               <input
@@ -88,15 +118,23 @@ const SearchBlock = ({ selectedTab, setSelectedTab }) => {
                 aria-selected="false"
                 onClick={(e) => setSelectedTab(e.target.id)}
               />
-              <TabText type="input">체험</TabText>
+              <TabText
+                type="input"
+                selectedTab={selectedTab}
+                tabName="search-tab-EXPERIENCES"
+              >
+                체험
+              </TabText>
             </TabWrapper>
             <Link to="/" /* s/experiences/online */ className="tab-text">
               <TabText>온라인 체험</TabText>
             </Link>
           </SearchTabList>
         </SearchTabWrapper>
-        {selectedTab === 'search-tab-STAYS' && <StayBlock />}
-        {selectedTab === 'search-tab-EXPERIENCES' && <h>test2</h>}
+        <SearchOptionWrapper>
+          {selectedTab === 'search-tab-STAYS' && <StayBlock />}
+          {selectedTab === 'search-tab-EXPERIENCES' && <h>test2</h>}
+        </SearchOptionWrapper>
       </StyledForm>
     </SearchWrapper>
   );
