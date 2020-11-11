@@ -13,7 +13,7 @@ const SearchWrapper = styled.div`
 `;
 const StyledForm = styled.form`
   margin: 0 auto;
-  max-width: 700px;
+  max-width: 800px;
 `;
 
 const SearchTabWrapper = styled.fieldset`
@@ -79,60 +79,71 @@ const SearchOptionWrapper = styled.div`
   border-radius: 32px;
   color: rgb(34, 34, 34);
   display: flex;
-  height: 60px;
+  height: 70px;
   position: relative;
-  background-color: rgb(247, 247, 247);
+  background-color: #f7f7f7;
+`;
+
+const Header = styled.header`
+  height: 75px;
+  left: 0px;
+  width: 100%;
+  z-index: 100;
+  position: fixed;
+  top: 0px;
 `;
 
 const SearchBlock = ({ selectedTab, setSelectedTab }) => {
   const STAY = OptionConstants.STAY;
   const EXPERIENCE = OptionConstants.EXPERIENCE;
   return (
-    <SearchWrapper>
-      <StyledForm>
-        <SearchTabWrapper>
-          <SearchTabList role="tablist" aria-label="무엇을 찾고 계신가요?">
-            <TabWrapper stay={STAY} experience={EXPERIENCE}>
-              <input
-                id={STAY}
-                role="tab"
-                type="radio"
-                aria-selected="true"
-                onClick={(e) => {
-                  setSelectedTab(e.target.id);
-                }}
-              />
-              <TabText type="input" selectedTab={selectedTab} tabName={STAY}>
-                숙소
-              </TabText>
-            </TabWrapper>
-            <TabWrapper stay={STAY} experience={EXPERIENCE}>
-              <input
-                id={EXPERIENCE}
-                role="tab"
-                type="radio"
-                aria-selected="false"
-                onClick={(e) => setSelectedTab(e.target.id)}
-              />
-              <TabText
-                type="input"
-                selectedTab={selectedTab}
-                tabName={EXPERIENCE}
-              >
-                체험
-              </TabText>
-            </TabWrapper>
-            <Link to="/" /* s/experiences/online */ className="tab-text">
-              <TabText>온라인 체험</TabText>
-            </Link>
-          </SearchTabList>
-        </SearchTabWrapper>
-        <SearchOptionWrapper>
-          {selectedTab === STAY && <StayBlock />}
-          {selectedTab === EXPERIENCE && <ExperienceBlock />}
-        </SearchOptionWrapper>
-      </StyledForm>
-    </SearchWrapper>
+    <Header>
+      <SearchWrapper>
+        <StyledForm>
+          <SearchTabWrapper>
+            <SearchTabList role="tablist" aria-label="무엇을 찾고 계신가요?">
+              <TabWrapper stay={STAY} experience={EXPERIENCE}>
+                <input
+                  id={STAY}
+                  role="tab"
+                  type="radio"
+                  aria-selected="true"
+                  onClick={(e) => {
+                    setSelectedTab(e.target.id);
+                  }}
+                />
+                <TabText type="input" selectedTab={selectedTab} tabName={STAY}>
+                  숙소
+                </TabText>
+              </TabWrapper>
+              <TabWrapper stay={STAY} experience={EXPERIENCE}>
+                <input
+                  id={EXPERIENCE}
+                  role="tab"
+                  type="radio"
+                  aria-selected="false"
+                  onClick={(e) => setSelectedTab(e.target.id)}
+                />
+                <TabText
+                  type="input"
+                  selectedTab={selectedTab}
+                  tabName={EXPERIENCE}
+                >
+                  체험
+                </TabText>
+              </TabWrapper>
+              <Link to="/" /* s/experiences/online */ className="tab-text">
+                <TabText>온라인 체험</TabText>
+              </Link>
+            </SearchTabList>
+          </SearchTabWrapper>
+          <SearchOptionWrapper>
+            {selectedTab === STAY && <StayBlock />}
+            {selectedTab === EXPERIENCE && <ExperienceBlock />}
+          </SearchOptionWrapper>
+        </StyledForm>
+      </SearchWrapper>
+    </Header>
   );
 };
 export default SearchBlock;

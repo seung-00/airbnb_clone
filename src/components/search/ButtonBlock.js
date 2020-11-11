@@ -36,14 +36,13 @@ const SearchButton = styled(BaseButton)`
 `;
 
 // eslint-disable-next-line react/prop-types
-const ButtonBlock = ({ setSelectedTab, setSearching }) => {
+const ButtonBlock = ({ setSearching }) => {
   return (
     <ButtonWrapper>
       <SearchButton
         border
         shadow
         onClick={() => {
-          setSelectedTab(OptionConstants.STAY); // default tab
           setSearching((prevState) => !prevState);
         }}
       >
