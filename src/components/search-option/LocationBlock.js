@@ -26,7 +26,7 @@ const LocationButton = styled(BaseButton)`
 const ButtonInnerWrapper = styled.div`
   position: relative;
   z-index: 3;
-  padding: 12px 30px;
+  padding: 17px 30px;
 `;
 
 const SearchOptionText = styled.div`

@@ -3,15 +3,18 @@ import styled from 'styled-components';
 import Fence from '@/components/common/Fence';
 import LocationBlock from '@/components/search-option/LocationBlock';
 import OptionButtonBlock from '@/components/search-option/OptionButtonBlock';
+import SearchButtonBlock from './SearchButtonBlock';
 
 const LocationWrapper = styled.div`
   flex: 1.3;
   margin: -2px;
+  position: relative;
 `;
 
 const CheckIOWrapper = styled.div`
-  flex: 2.2;
+  flex: 2.5;
   display: flex;
+  position: relative;
   div {
     &.check-in-block,
     &.check-out-block {
@@ -20,8 +23,20 @@ const CheckIOWrapper = styled.div`
   }
 `;
 
-const HeadCountWrapper = styled.div`
-  flex: 0.95;
+const RestBlockWrapper = styled.div`
+  flex: 2;
+  div {
+    &.head-count-block {
+      position: relative;
+      z-index: 1;
+    }
+    &.search-button-wrapper {
+      margin-left: auto;
+      padding-right: 15px;
+      position: relative;
+      z-index: 5;
+    }
+  }
 `;
 
 const StayBlock = () => {
@@ -41,9 +56,11 @@ const StayBlock = () => {
         </div>
       </CheckIOWrapper>
       <Fence />
-      <HeadCountWrapper>
-        <OptionButtonBlock category="인원" description="게스트 추가" />
-      </HeadCountWrapper>
+      <RestBlockWrapper>
+        <div className="head-count-block">
+          <SearchButtonBlock />
+        </div>
+      </RestBlockWrapper>
     </>
   );
 };

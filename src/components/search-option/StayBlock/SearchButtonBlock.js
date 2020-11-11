@@ -3,6 +3,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import BaseButton from '@/components/common/BaseButton';
 import useComponentVisible from '@/utils/hooks/useComponentVisible';
+import { ReactComponent as SearchSVG } from '@/svg/serach_button.svg';
 
 const ButtonInnerWrapper = styled.div`
   position: relative;
@@ -48,7 +49,20 @@ const OptionButton = styled(BaseButton)`
     `}
 `;
 
-const OptionButtonBlock = ({ category, description }) => {
+const SearchSVGWrapper = styled.div`
+  background-color: rgb(255, 56, 92);
+  border-radius: 50%;
+  height: 15px;
+  margin: 7px 7px 7px 0;
+  padding: 16px;
+  width: 15px;
+  svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+`;
+
+const SearchButtonBlock = () => {
   const [ref, isComponentVisible, setIsComponentVisible] = useComponentVisible(
     false
   );
@@ -63,13 +77,18 @@ const OptionButtonBlock = ({ category, description }) => {
           }}
         >
           <ButtonInnerWrapper>
-            <SearchOptionText>{category}</SearchOptionText>
-            <ButtonInnerText>{description}</ButtonInnerText>
+            <SearchOptionText>인원</SearchOptionText>
+            <ButtonInnerText>게스트 추가</ButtonInnerText>
           </ButtonInnerWrapper>
+          <div className="search-button-wrapper">
+            <SearchSVGWrapper>
+              <SearchSVG />
+            </SearchSVGWrapper>
+          </div>
         </OptionButton>
       </label>
     </>
   );
 };
 
-export default OptionButtonBlock;
+export default SearchButtonBlock;
