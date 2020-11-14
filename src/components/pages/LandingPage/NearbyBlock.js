@@ -17,18 +17,28 @@ const CardContainer = styled.div`
   align-content: space-around;
 `;
 
+const cardData = [
+  { region: '서울', distance: '45분' },
+  { region: '수원시', distance: '15분' },
+  { region: '인천', distance: '45분' },
+  { region: '의정부시', distance: '1시간' },
+  { region: '대전', distance: '2시간' },
+  { region: '대구', distance: '3.5시간' },
+  { region: '성남시', distance: '30분' },
+  { region: '안산시', distance: '30분' },
+];
+
 const NearbyBlock = () => {
   return (
     <NearbyWrapper>
       <CardContainer>
-        <CardBlock region="서울" distance="45분" />
-        <CardBlock region="수원시" distance="15분" />
-        <CardBlock region="인천" distance="45분" />
-        <CardBlock region="의정부시" distance="1시간" />
-        <CardBlock region="대전" distance="2시간" />
-        <CardBlock region="대구" distance="3.5시간" />
-        <CardBlock region="성남시" distance="30분" />
-        <CardBlock region="안산시" distance="30분" />
+        {cardData.map((data, index) => (
+          <CardBlock
+            key={index}
+            region={data.region}
+            distance={data.distance}
+          />
+        ))}
       </CardContainer>
     </NearbyWrapper>
   );
