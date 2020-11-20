@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as SearchSVG } from '@/svg/serach_button.svg';
 import BaseButton from '@/components/common/BaseButton';
-import OptionConstants from '@/utils/constants/SearchOptionConstants';
 
 const ButtonWrapper = styled.div`
   width: 290px;
@@ -42,7 +41,7 @@ const ButtonBlock = ({ setSearching }) => {
       <SearchButton
         border
         shadow
-        onClick={() => {
+        onClick={(e) => {
           setSearching((prevState) => !prevState);
         }}
       >

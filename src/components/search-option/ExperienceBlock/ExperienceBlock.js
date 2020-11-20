@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Fence from '@/components/common/Fence';
-import LocationBlock from '@/components/search-option/LocationBlock';
-import OptionButtonBlock from '@/components/search-option/OptionButtonBlock';
+import SearchInputBlock from '@/components/search-option/SearchInputBlock';
 
 const LocationWrapper = styled.div`
   flex: 1;
@@ -17,13 +16,21 @@ const ExperienceBlock = () => {
   return (
     <>
       <LocationWrapper>
-        <LocationBlock />
+        <SearchInputBlock
+          form={'experience'}
+          name={'location'}
+          namePrint={'위치'}
+          inputPlaceholder={'어디로 여행가세요?'}
+          isFocus={true}
+        />
       </LocationWrapper>
       <Fence />
       <DateWrapper>
-        <OptionButtonBlock
-          category="날짜"
-          description="원하는 날짜를 입력하세요."
+        <SearchInputBlock
+          form={'experience'}
+          name={'date'}
+          namePrint={'날짜'}
+          inputPlaceholder={'원하시는 날짜를 입력하세요.'}
         />
       </DateWrapper>
     </>
