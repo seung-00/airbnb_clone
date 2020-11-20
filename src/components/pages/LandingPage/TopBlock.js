@@ -10,7 +10,6 @@ const TopWallpaper = styled.img`
 `;
 
 const TopWrapper = styled.div`
-  background-color: beige;
   position: relative;
   height: 550px;
   width: 100%;

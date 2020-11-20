@@ -63,7 +63,6 @@ const SearchInputBlock = ({
   isFocus,
 }) => {
   const dispatch = useDispatch();
-
   const handleChange = (e) => {
     const { value, name } = e.target;
     dispatch(
@@ -84,7 +83,9 @@ const SearchInputBlock = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push('/search-stay');
+    form == 'stay'
+      ? history.push('/search-stay')
+      : history.push('/search-experience');
   };
 
   return (

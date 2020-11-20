@@ -138,7 +138,7 @@ const NavBar = () => {
       <NavHeader isSearching={isSearching} isScrolled={isScrolled}>
         <NavWraper>
           <div className="left-block">
-            <Link to="/search-stay">
+            <Link to="/">
               <LogoWrapper isScrolled={isScrolled}>
                 <LogoSvg />
               </LogoWrapper>
