@@ -5,6 +5,8 @@ import produce from 'immer';
 const CHANGE_SEARCH = 'search/CHANGE_SEARCH';
 const INITIALIZE_SEARCH = 'search/INITIALIZE_SEARCH';
 
+export const initializeSearch = createAction(INITIALIZE_SEARCH, (form) => form); // stay, experience
+
 export const changeSearch = createAction(
   CHANGE_SEARCH,
   ({ form, key, value }) => ({
@@ -13,8 +15,6 @@ export const changeSearch = createAction(
     value, // what want to change
   })
 );
-
-export const initializeSearch = createAction(INITIALIZE_SEARCH, (form) => form); // stay, experience
 
 const initialState = {
   stay: {
@@ -31,14 +31,14 @@ const initialState = {
 
 const search = handleActions(
   {
-    [CHANGE_SEARCH]: (state, { payload: { form, key, value } }) =>
-      produce(state, (draft) => {
-        draft[form][key] = value;
-      }),
     [INITIALIZE_SEARCH]: (state, { payload: form }) => ({
       ...state,
       [form]: initialState[form],
     }),
+    [CHANGE_SEARCH]: (state, { payload: { form, key, value } }) =>
+      produce(state, (draft) => {
+        draft[form][key] = value;
+      }),
   },
   initialState
 );

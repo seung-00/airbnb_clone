@@ -2,12 +2,13 @@
 import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { ReactComponent as LogoSvg } from '@/svg/logo.svg';
-import ButtonBlock from '@/components/search/ButtonBlock';
 import MainBlock from '@/components/search/MainBlock';
 import MenuBlock from '@/components/search/MenuBlock';
-import SearchBlock from '@/components/search/SearchBlock';
 import { respondTo } from '@/utils/mixins';
-import OptionConstants from '@/utils/constants/SearchOptionConstants';
+import { Link, useLocation } from 'react-router-dom';
+import CenterBlock from './CenterBlock';
+import { useDispatch, useSelector } from 'react-redux';
+import { scrollOn, scrollOff } from '@/modules/scroll';
 
 /**
  * Components responsible for layout navigation bar
@@ -87,10 +88,19 @@ const NavWraper = styled.div`
 `;
 
 const LogoWrapper = styled.div`
+  position: relative;
+  z-index: 101;
   path {
     height: 80px;
     width: 102px;
-    fill: rgb(255, 56, 92);
+    ${(props) =>
+      props.isScrolled
+        ? css`
+            fill: rgb(255, 56, 92);
+          `
+        : css`
+            fill: rgb(255, 255, 255);
+          `}
   }
 `;
 
@@ -105,47 +115,40 @@ const Overlay = styled.div`
 `;
 
 const NavBar = () => {
-  const STAY = OptionConstants.STAY;
+  const location = useLocation();
+  const isLanding = location.pathname == '/';
 
   const [isSearching, setSearching] = useState(false);
-  const [selectedTab, setSelectedTab] = useState(STAY);
-  const [isScrolled, setScrolled] = useState(false);
-
-  const onScroll = () => {
-    setSearching(false);
-    document.documentElement.scrollTop > 100
-      ? setScrolled(true)
-      : setScrolled(false);
-  };
+  const isScrolled = useSelector((state) => state.scroll.isScrolled);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    setSearching(false);
+    {
+      isLanding ? dispatch(scrollOff()) : dispatch(scrollOn());
+    }
+    return () => {
+      setSearching(false);
+    };
+  }, [isLanding]);
+  // page 이동이 일어났을 때 isScroll을 true로 두어 NavBar를 디폴트 상태로 만든다.
 
   return (
     <>
       <NavHeader isSearching={isSearching} isScrolled={isScrolled}>
         <NavWraper>
           <div className="left-block">
-            <LogoWrapper>
-              <LogoSvg />
-            </LogoWrapper>
+            <Link to="/search-stay">
+              <LogoWrapper isScrolled={isScrolled}>
+                <LogoSvg />
+              </LogoWrapper>
+            </Link>
           </div>
           <div className="center-block">
-            {isScrolled ? (
-              isSearching ? (
-                <SearchBlock
-                  selectedTab={selectedTab}
-                  setSelectedTab={setSelectedTab}
-                />
-              ) : (
-                <ButtonBlock setSearching={setSearching} />
-              )
-            ) : (
-              <SearchBlock
-                selectedTab={selectedTab}
-                setSelectedTab={setSelectedTab}
+            {isLanding && (
+              <CenterBlock
+                isSearching={isSearching}
+                setSearching={setSearching}
               />
             )}
           </div>

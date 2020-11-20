@@ -41,7 +41,7 @@ const ButtonBlock = ({ setSearching }) => {
       <SearchButton
         border
         shadow
-        onClick={() => {
+        onClick={(e) => {
           setSearching((prevState) => !prevState);
         }}
       >

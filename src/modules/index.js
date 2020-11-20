@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import search from '@/modules/search';
+import search from './search';
+import scroll from './scroll';
 
 const rootReducer = combineReducers({
   search,
+  scroll,
 });
 
 export default rootReducer;

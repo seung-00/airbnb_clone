@@ -5,13 +5,14 @@ import styled, { css } from 'styled-components';
 import StayBlock from '@/components/search-option/StayBlock/StayBlock';
 import ExperienceBlock from '@/components/search-option/ExperienceBlock/ExperienceBlock';
 import OptionConstants from '@/utils/constants/SearchOptionConstants';
+import { useSelector } from 'react-redux';
 
 const SearchWrapper = styled.div`
   position: absolute;
   left: 0px;
   width: 100%;
 `;
-const StyledForm = styled.form`
+const OptionBlock = styled.div`
   margin: 0 auto;
   max-width: 800px;
 `;
@@ -23,6 +24,11 @@ const SearchTabWrapper = styled.fieldset`
 `;
 
 const SearchTabList = styled.div`
+  ${(props) =>
+    !props.isScrolled &&
+    css`
+      color: white;
+    `}
   align-items: center;
   display: flex;
   justify-content: center;
@@ -79,7 +85,7 @@ const SearchOptionWrapper = styled.div`
   border-radius: 32px;
   color: rgb(34, 34, 34);
   display: flex;
-  height: 70px;
+  height: 67px;
   position: relative;
   background-color: #f7f7f7;
 `;
@@ -96,12 +102,18 @@ const Header = styled.header`
 const SearchBlock = ({ selectedTab, setSelectedTab }) => {
   const STAY = OptionConstants.STAY;
   const EXPERIENCE = OptionConstants.EXPERIENCE;
+  const isScrolled = useSelector((state) => state.scroll.isScrolled);
+
   return (
     <Header>
       <SearchWrapper>
-        <StyledForm>
+        <OptionBlock>
           <SearchTabWrapper>
-            <SearchTabList role="tablist" aria-label="무엇을 찾고 계신가요?">
+            <SearchTabList
+              role="tablist"
+              aria-label="무엇을 찾고 계신가요?"
+              isScrolled={isScrolled} // 스크롤 여부에 따라 폰트 색 변경
+            >
               <TabWrapper stay={STAY} experience={EXPERIENCE}>
                 <input
                   id={STAY}
@@ -141,7 +153,7 @@ const SearchBlock = ({ selectedTab, setSelectedTab }) => {
             {selectedTab === STAY && <StayBlock />}
             {selectedTab === EXPERIENCE && <ExperienceBlock />}
           </SearchOptionWrapper>
-        </StyledForm>
+        </OptionBlock>
       </SearchWrapper>
     </Header>
   );
