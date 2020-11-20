@@ -26,7 +26,7 @@ const LocationButton = styled(BaseButton)`
 const ButtonInnerWrapper = styled.div`
   position: relative;
   z-index: 3;
-  padding: 12px 30px;
+  padding: 17px 30px;
 `;
 
 const SearchOptionText = styled.div`
@@ -46,23 +46,18 @@ const LocationInput = styled.input`
   }
 `;
 
-const LocationWrapper = styled.div`
-  flex: 1.5;
-  margin: -2px;
-`;
-
 const LocationBlock = () => {
   return (
-    <LocationWrapper>
-      <label className="input-wrapper">
-        <LocationButton grayBackground backColor={'lightgray'}>
+    <>
+      <label>
+        <LocationButton hoverColor={'#EBEBEB'}>
           <ButtonInnerWrapper>
             <SearchOptionText>위치</SearchOptionText>
             <LocationInput placeholder="어디로 여행가세요?" autoFocus />
           </ButtonInnerWrapper>
         </LocationButton>
       </label>
-    </LocationWrapper>
+    </>
   );
 };
 

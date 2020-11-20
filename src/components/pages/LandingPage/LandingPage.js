@@ -1,10 +1,13 @@
 import React from 'react';
+import NearbyBlock from './NearbyBlock';
+import TopBlock from './TopBlock';
 
 const LandingPage = () => {
   return (
-    <div>
-      <h>LandingPage</h>
-    </div>
+    <>
+      <TopBlock />
+      <NearbyBlock />
+    </>
   );
 };
 

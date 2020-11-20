@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as SearchSVG } from '@/svg/serach_button.svg';
 import BaseButton from '@/components/common/BaseButton';
+import OptionConstants from '@/utils/constants/SearchOptionConstants';
 
 const ButtonWrapper = styled.div`
   width: 290px;
@@ -35,14 +36,13 @@ const SearchButton = styled(BaseButton)`
 `;
 
 // eslint-disable-next-line react/prop-types
-const ButtonBlock = ({ setSelectedTab, setSearching }) => {
+const ButtonBlock = ({ setSearching }) => {
   return (
     <ButtonWrapper>
       <SearchButton
         border
         shadow
         onClick={() => {
-          setSelectedTab('search-tab-STAYS'); // default tab
           setSearching((prevState) => !prevState);
         }}
       >

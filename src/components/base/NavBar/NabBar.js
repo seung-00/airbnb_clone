@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
+import { ReactComponent as LogoSvg } from '@/svg/logo.svg';
 import ButtonBlock from '@/components/search/ButtonBlock';
 import MainBlock from '@/components/search/MainBlock';
 import MenuBlock from '@/components/search/MenuBlock';
-import { respondTo } from '@/utils/mixins';
-import { ReactComponent as LogoSvg } from '@/svg/logo.svg';
 import SearchBlock from '@/components/search/SearchBlock';
+import { respondTo } from '@/utils/mixins';
+import OptionConstants from '@/utils/constants/SearchOptionConstants';
 
 /**
  * Components responsible for layout navigation bar
@@ -18,11 +19,19 @@ const NavHeader = styled.header`
   top: 0px;
   height: 80px;
   width: 100%;
-  background-color: white;
   z-index: 100;
+  background-color: transparent;
 
   ${(props) =>
-    props.selectedTab &&
+    props.isScrolled &&
+    css`
+      & {
+        background-color: white;
+      }
+    `}
+
+  ${(props) =>
+    props.isSearching &&
     css`
       &::after {
         position: absolute;
@@ -85,36 +94,76 @@ const LogoWrapper = styled.div`
   }
 `;
 
+const Overlay = styled.div`
+  background-color: rgba(0, 0, 0, 0.25);
+  bottom: 0px;
+  left: 0px;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  z-index: 99;
+`;
+
 const NavBar = () => {
+  const STAY = OptionConstants.STAY;
+
   const [isSearching, setSearching] = useState(false);
-  const [selectedTab, setSelectedTab] = useState('');
+  const [selectedTab, setSelectedTab] = useState(STAY);
+  const [isScrolled, setScrolled] = useState(false);
+
+  const onScroll = () => {
+    setSearching(false);
+    document.documentElement.scrollTop > 100
+      ? setScrolled(true)
+      : setScrolled(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <NavHeader selectedTab={selectedTab}>
-      <NavWraper>
-        <div className="left-block">
-          <LogoWrapper>
-            <LogoSvg />
-          </LogoWrapper>
-        </div>
-        <div className="center-block">
-          {isSearching ? (
-            <SearchBlock
-              selectedTab={selectedTab}
-              setSelectedTab={setSelectedTab}
-            />
-          ) : (
-            <ButtonBlock
-              setSelectedTab={setSelectedTab}
-              setSearching={setSearching}
-            />
-          )}
-        </div>
-        <div className="right-block">
-          <MainBlock />
-          <MenuBlock />
-        </div>
-      </NavWraper>
-    </NavHeader>
+    <>
+      <NavHeader isSearching={isSearching} isScrolled={isScrolled}>
+        <NavWraper>
+          <div className="left-block">
+            <LogoWrapper>
+              <LogoSvg />
+            </LogoWrapper>
+          </div>
+          <div className="center-block">
+            {isScrolled ? (
+              isSearching ? (
+                <SearchBlock
+                  selectedTab={selectedTab}
+                  setSelectedTab={setSelectedTab}
+                />
+              ) : (
+                <ButtonBlock setSearching={setSearching} />
+              )
+            ) : (
+              <SearchBlock
+                selectedTab={selectedTab}
+                setSelectedTab={setSelectedTab}
+              />
+            )}
+          </div>
+          <div className="right-block">
+            <MainBlock />
+            <MenuBlock />
+          </div>
+        </NavWraper>
+      </NavHeader>
+
+      {isSearching && (
+        <Overlay
+          onClick={() => {
+            setSearching(false);
+          }}
+        />
+      )}
+    </>
   );
 };
 

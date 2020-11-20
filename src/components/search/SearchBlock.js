@@ -2,7 +2,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import StayBlock from '@/components/search-stay/StayBlock';
+import StayBlock from '@/components/search-option/StayBlock/StayBlock';
+import ExperienceBlock from '@/components/search-option/ExperienceBlock/ExperienceBlock';
+import OptionConstants from '@/utils/constants/SearchOptionConstants';
 
 const SearchWrapper = styled.div`
   position: absolute;
@@ -11,7 +13,7 @@ const SearchWrapper = styled.div`
 `;
 const StyledForm = styled.form`
   margin: 0 auto;
-  max-width: 700px;
+  max-width: 800px;
 `;
 
 const SearchTabWrapper = styled.fieldset`
@@ -28,12 +30,8 @@ const SearchTabList = styled.div`
 `;
 
 const TabWrapper = styled.label`
-  #search-tab-STAYS {
-    appearance: none;
-  }
-  #search-tab-EXPERIENCES {
-    appearance: none;
-  }
+  ${(props) => `#${props.stay} {appearance: none;}`}
+  ${(props) => `#${props.experience} {appearance: none;}`}
 `;
 
 const TabText = styled.span`
@@ -42,6 +40,17 @@ const TabText = styled.span`
   font-weight: 400;
   padding: 10px 16px;
   position: relative;
+  &::before {
+    content: '';
+    background-color: currentcolor;
+    border-radius: 1px;
+    height: 2px;
+    width: 20px;
+    position: absolute;
+    left: 35%;
+    bottom: 0px;
+    transform: scaleX(0);
+  }
 
   ${(props) =>
     props.type === 'input' &&
@@ -52,54 +61,89 @@ const TabText = styled.span`
   &:hover {
     opacity: 0.7;
     &::before {
-      content: '';
-      background-color: currentcolor;
-      border-radius: 1px;
-      height: 2px;
-      width: 4.5px;
-      position: absolute;
-      left: 50%;
-      bottom: 0px;
+      transform: scaleX(0.2);
     }
   }
+  ${(props) =>
+    props.selectedTab &&
+    props.selectedTab === props.tabName &&
+    css`
+      &::before {
+        transform: scaleX(1) !important;
+      }
+    `}
+`;
+
+const SearchOptionWrapper = styled.div`
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 32px;
+  color: rgb(34, 34, 34);
+  display: flex;
+  height: 70px;
+  position: relative;
+  background-color: #f7f7f7;
+`;
+
+const Header = styled.header`
+  height: 75px;
+  left: 0px;
+  width: 100%;
+  z-index: 100;
+  position: fixed;
+  top: 0px;
 `;
 
 const SearchBlock = ({ selectedTab, setSelectedTab }) => {
+  const STAY = OptionConstants.STAY;
+  const EXPERIENCE = OptionConstants.EXPERIENCE;
   return (
-    <SearchWrapper>
-      <StyledForm>
-        <SearchTabWrapper>
-          <SearchTabList role="tablist" aria-label="무엇을 찾고 계신가요?">
-            <TabWrapper>
-              <input
-                id="search-tab-STAYS"
-                role="tab"
-                type="radio"
-                aria-selected="true"
-                onClick={(e) => setSelectedTab(e.target.id)}
-              />
-              <TabText type="input">숙소</TabText>
-            </TabWrapper>
-            <TabWrapper>
-              <input
-                id="search-tab-EXPERIENCES"
-                role="tab"
-                type="radio"
-                aria-selected="false"
-                onClick={(e) => setSelectedTab(e.target.id)}
-              />
-              <TabText type="input">체험</TabText>
-            </TabWrapper>
-            <Link to="/" /* s/experiences/online */ className="tab-text">
-              <TabText>온라인 체험</TabText>
-            </Link>
-          </SearchTabList>
-        </SearchTabWrapper>
-        {selectedTab === 'search-tab-STAYS' && <StayBlock />}
-        {selectedTab === 'search-tab-EXPERIENCES' && <h>test2</h>}
-      </StyledForm>
-    </SearchWrapper>
+    <Header>
+      <SearchWrapper>
+        <StyledForm>
+          <SearchTabWrapper>
+            <SearchTabList role="tablist" aria-label="무엇을 찾고 계신가요?">
+              <TabWrapper stay={STAY} experience={EXPERIENCE}>
+                <input
+                  id={STAY}
+                  role="tab"
+                  type="radio"
+                  aria-selected="true"
+                  onClick={(e) => {
+                    setSelectedTab(e.target.id);
+                  }}
+                />
+                <TabText type="input" selectedTab={selectedTab} tabName={STAY}>
+                  숙소
+                </TabText>
+              </TabWrapper>
+              <TabWrapper stay={STAY} experience={EXPERIENCE}>
+                <input
+                  id={EXPERIENCE}
+                  role="tab"
+                  type="radio"
+                  aria-selected="false"
+                  onClick={(e) => setSelectedTab(e.target.id)}
+                />
+                <TabText
+                  type="input"
+                  selectedTab={selectedTab}
+                  tabName={EXPERIENCE}
+                >
+                  체험
+                </TabText>
+              </TabWrapper>
+              <Link to="/" /* s/experiences/online */ className="tab-text">
+                <TabText>온라인 체험</TabText>
+              </Link>
+            </SearchTabList>
+          </SearchTabWrapper>
+          <SearchOptionWrapper>
+            {selectedTab === STAY && <StayBlock />}
+            {selectedTab === EXPERIENCE && <ExperienceBlock />}
+          </SearchOptionWrapper>
+        </StyledForm>
+      </SearchWrapper>
+    </Header>
   );
 };
-
 export default SearchBlock;

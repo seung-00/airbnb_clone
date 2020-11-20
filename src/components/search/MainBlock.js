@@ -31,12 +31,12 @@ const EarthSvgWrapper = styled.div`
 const MainBlock = () => {
   return (
     <MainWrapper>
-      <BaseButton grayBackground backColor={'#f1f2f6'}>
+      <BaseButton hoverColor={'rgb(247, 247, 247)'}>
         <HostWrapper>
           <Link to="/" /* host/homes */>호스트 되기</Link>
         </HostWrapper>
       </BaseButton>
-      <BaseButton grayBackground backColor={'#f1f2f6'}>
+      <BaseButton hoverColor={'rgb(247, 247, 247)'}>
         <Language>
           <EarthSvgWrapper>
             <EarthSvg />
