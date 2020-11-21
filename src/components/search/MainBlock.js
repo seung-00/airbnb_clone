@@ -50,7 +50,6 @@ const MainBlock = () => {
     isScrolled
       ? setHoverColor('rgb(247, 247, 247)')
       : setHoverColor('rgb(255, 255, 255,0.1)');
-    console.log(hoverColor);
   }, [isScrolled]);
 
   return (

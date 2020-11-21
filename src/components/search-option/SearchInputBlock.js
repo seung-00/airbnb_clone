@@ -83,7 +83,7 @@ const SearchInputBlock = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    form == 'stay'
+    form === 'stay'
       ? history.push('/search-stay')
       : history.push('/search-experience');
   };
