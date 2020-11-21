@@ -116,7 +116,7 @@ const Overlay = styled.div`
 
 const NavBar = () => {
   const location = useLocation();
-  const isLanding = location.pathname == '/';
+  const isLanding = location.pathname === '/';
 
   const [isSearching, setSearching] = useState(false);
   const isScrolled = useSelector((state) => state.scroll.isScrolled);
@@ -124,13 +124,11 @@ const NavBar = () => {
 
   useEffect(() => {
     setSearching(false);
-    {
-      isLanding ? dispatch(scrollOff()) : dispatch(scrollOn());
-    }
+    isLanding ? dispatch(scrollOff()) : dispatch(scrollOn());
     return () => {
       setSearching(false);
     };
-  }, [isLanding]);
+  }, [isLanding, dispatch]);
   // page 이동이 일어났을 때 isScroll을 true로 두어 NavBar를 디폴트 상태로 만든다.
 
   return (
